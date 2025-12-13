@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout.jsx';
-import Home from '../pages/Home/Home.jsx';
+import Weather from '../pages/Weather/Weather.jsx';
 import FindCity from '../pages/FindCity/FindCity.jsx';
 import ContactUs from '../components/ContactUs/ContactUs.jsx';
 import Help from '../pages/Help/Help.jsx';
@@ -11,7 +11,7 @@ export default function AppRoutes() {
     <BrowserRouter>
       <MainLayout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Weather />} />
           <Route path="/findcity" element={<FindCity />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/help" element={<Help />} />

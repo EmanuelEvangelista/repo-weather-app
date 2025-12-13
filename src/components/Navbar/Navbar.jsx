@@ -21,14 +21,14 @@ const Navbar = () => {
         <li>
           <NavLink to="/" end onClick={toggleMenu}
             className={({ isActive }) => (isActive ? styles.active : "")}>
-            HOME
+            WEATHER
           </NavLink>
         </li>
         <li>
           <NavLink to="/findcity" onClick={toggleMenu}
             className={({ isActive }) => (isActive ? styles.active : "")}>
             <FaSearch style={{ marginRight: "6px" }} />
-            <span>SEARCH CITY</span>
+            <span>ADD CITY</span>
           </NavLink>
         </li>
         <li>
