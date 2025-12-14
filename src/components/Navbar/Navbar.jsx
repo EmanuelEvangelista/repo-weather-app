@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { FaSearch } from "react-icons/fa";
@@ -7,8 +7,22 @@ import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+    useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className={styles.nav}>
@@ -17,7 +31,7 @@ const Navbar = () => {
         <FaBars size={24} />
       </button>
 
-      <ul className={`${styles.navList} ${isOpen ? styles.open : ""}`}>
+      <ul ref={menuRef}  className={`${styles.navList} ${isOpen ? styles.open : ""}`}>
         <li>
           <NavLink to="/" end onClick={toggleMenu}
             className={({ isActive }) => (isActive ? styles.active : "")}>
