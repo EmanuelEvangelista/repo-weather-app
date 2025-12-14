@@ -19,6 +19,12 @@ const FindCity = () => {
     setCityToAdd("");
   }
 
+  function handleClearCities() {
+  sessionStorage.removeItem("cities");   // limpia solo cities
+  setCity([]);                          // resetea el estado
+  onOpen('success', 'Cities list has been cleared');
+}
+
   return (
     <Container className="mt-5">
       <Row className="justify-content-center">
@@ -43,6 +49,14 @@ const FindCity = () => {
                 >
                   {console.log(city)}
                   Add
+                </Button>
+                <Button
+                  variant="outline-danger"
+                  className="mt-2 w-100"
+                  onClick={handleClearCities}
+                  disabled={city.length === 0}
+                >
+                  Clear cities
                 </Button>
               </Form>
             </Card.Body>

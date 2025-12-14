@@ -21,6 +21,21 @@ function WeatherProvider({ children }) {
   const [weatherCard, setWeatherCard] = useState(null);
   const claveAPI = "fe98ec24d8c8c3045ec7ffc46da0e538";
 
+  const storedAuth =
+    JSON.parse(localStorage.getItem("isAuthenticated")) || false;
+  const [isAuthenticated, setIsAuthenticated] = useState(storedAuth);
+
+  const [userStored, setUserStored] = useState([])
+
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("userData");
+    return storedUser
+      ? JSON.parse(storedUser)
+      : { firstName: "", lastName: "", email: "" };
+  });
+
     useEffect(() => {
   if (!selectedCity) return;
 
@@ -48,6 +63,14 @@ function WeatherProvider({ children }) {
       city, 
       selectedCity,
       weatherCard,
+      user,
+      isAuthenticated,
+      isSubmitted,
+      userStored,
+      setUserStored,
+      setIsSubmitted,
+      setUser,
+      setIsAuthenticated,
       setCity,
       setSelectedCity
       }}>
