@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { WeatherContext } from '../../context/WeatherContext.jsx';
 
 const WeatherCard = () => {
-    const { weatherCard } = useContext(WeatherContext);
+  const { weatherCard } = useContext(WeatherContext);
 
   if (!weatherCard) return null;
 
@@ -15,34 +15,39 @@ const WeatherCard = () => {
     wind
   } = weatherCard;
 
-  const iconCode = weatherInfo[0].icon;
-  const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+  // Usar optional chaining para evitar errores
+  const iconCode = weatherInfo?.[0]?.icon;
+  const iconUrl = iconCode
+    ? `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+    : null;
 
   return (
     <Card className="mt-4 shadow text-center">
       <Card.Body>
         <Card.Title>
-          {name}, {sys.country}
+          {name}{sys?.country ? `, ${sys.country}` : ""}
         </Card.Title>
 
-        <img src={iconUrl} alt={weatherInfo[0].description} />
+        {iconUrl && (
+          <img src={iconUrl} alt={weatherInfo?.[0]?.description || "icon"} />
+        )}
 
         <Card.Text className="text-capitalize">
-          {weatherInfo[0].description}
+          {weatherInfo?.[0]?.description || "Sin descripción"}
         </Card.Text>
 
-        <h2>{Math.round(main.temp)}°C</h2>
+        <h2>{main?.temp ? `${Math.round(main.temp)}°C` : "N/A"}</h2>
 
         <Card.Text>
-          Sensación térmica: {Math.round(main.feels_like)}°C
-        </Card.Text>
-
-        <Card.Text>
-          Humedad: {main.humidity}%
+          Sensación térmica: {main?.feels_like ? `${Math.round(main.feels_like)}°C` : "N/A"}
         </Card.Text>
 
         <Card.Text>
-          Viento: {wind.speed} km/h
+          Humedad: {main?.humidity ? `${main.humidity}%` : "N/A"}
+        </Card.Text>
+
+        <Card.Text>
+          Viento: {wind?.speed ? `${wind.speed} km/h` : "N/A"}
         </Card.Text>
       </Card.Body>
     </Card>

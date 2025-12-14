@@ -34,7 +34,7 @@
 }
 
 .navList a:hover {
-  color: #f4ce14;
+  color: #a0aaaeff;
 }
 
 .themeBtn {
@@ -43,7 +43,7 @@
 
 /* Estilo para el enlace activo (clase `.active` expuesta desde el módulo) */
 .active {
-  color: #f4ce14;
+  color: #a0aaaeff;
   font-weight: 600;
 }
 
@@ -55,7 +55,7 @@
   left: 1rem;
   right: 1rem;
   height: 2px;
-  background-color: #f4ce14;
+  background-color: #a0aaaeff;
   transition: transform 0.3s ease;
 }
 

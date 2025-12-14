@@ -6,19 +6,18 @@ import { useAlertContext} from '../../context/alertContext.jsx';
 
 const Logout = () => {
   const navigate = useNavigate();
-  const { setUser, setIsAuthenticated, setIsSubmitted } = useContext(WeatherContext);
+  const { setUser, setIsAuthenticated, setIsSubmitted, setCity } = useContext(WeatherContext);
   const { onOpen } = useAlertContext();
 
   const handleLogout = () => {
     // 👉 limpiar estados del contexto
     setUser({ firstName: "", lastName: "", email: "" });
     setIsAuthenticated(false);
+    setCity([]);
+    localStorage.removeItem("cities");
     setIsSubmitted(false);
     onOpen('success', 'Your seccion has been closed');
 
-    // 👉 limpiar localStorage
-    localStorage.removeItem("userData");
-    localStorage.removeItem("isAuthenticated");
     // 👉 redirigir al home
     navigate("/login");
   };
@@ -29,7 +28,7 @@ const Logout = () => {
       style={{
         backgroundColor: "black",
         border: "none",
-        color: "#f4ce14",
+        color: "#ADD8E6",
         fontWeight: "bold",
       }}
       onClick={handleLogout}

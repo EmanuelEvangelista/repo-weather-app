@@ -1,10 +1,10 @@
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { WeatherContext } from '../../context/WeatherContext.jsx';
 import {useAlertContext} from "../../context/alertContext.jsx";
 
 const FindCity = () => {
-  const { city, setCity } = useContext(WeatherContext);
+  const { city, setCity, setUserStored, user } = useContext(WeatherContext);
   const [cityToAdd, setCityToAdd] = useState("");
   const { onOpen } = useAlertContext();
 
@@ -24,7 +24,6 @@ const FindCity = () => {
   setCity([]);                          // resetea el estado
   onOpen('success', 'Cities list has been cleared');
 }
-
   return (
     <Container className="mt-5">
       <Row className="justify-content-center">

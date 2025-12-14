@@ -23,7 +23,7 @@ const UserInfoShow = () => {
         marginTop: "2rem",
         lineHeight: "2rem",
         fontSize: "1.1rem",
-        backgroundColor: "#3a4a45",
+        backgroundColor: "#ADD8E6",
         padding: "1.5rem",
         borderRadius: "12px",
         boxShadow: "inset 0 0 8px rgba(0,0,0,0.4)",
@@ -31,7 +31,7 @@ const UserInfoShow = () => {
     >
       <Card.Title
         style={{
-          color: "#f4ce14",
+          color: "#4f5557ff",
           fontFamily: "Roboto Condensed, sans-serif",
           fontWeight: "bold",
           marginBottom: "1rem",
@@ -43,17 +43,17 @@ const UserInfoShow = () => {
 
       {user.firstName && (
         <Card.Text style={{ marginBottom: "0.75rem", color: "white" }}>
-          <strong style={{ color: "#f4ce14" }}>First Name:</strong> {user.firstName}
+          <strong style={{ color: "#4f5557ff" }}>First Name:</strong> {user.firstName}
         </Card.Text>
       )}
       {user.lastName && (
         <Card.Text style={{ marginBottom: "0.75rem", color: "white" }}>
-          <strong style={{ color: "#f4ce14" }}>Last Name:</strong> {user.lastName}
+          <strong style={{ color: "#4f5557ff" }}>Last Name:</strong> {user.lastName}
         </Card.Text>
       )}
       {user.email && (
         <Card.Text style={{ marginBottom: "0.75rem", color: "white" }}>
-          <strong style={{ color: "#f4ce14" }}>Email:</strong> {user.email}
+          <strong style={{ color: "#4f5557ff" }}>Email:</strong> {user.email}
         </Card.Text>
       )}
 
